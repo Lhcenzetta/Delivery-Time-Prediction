@@ -1,5 +1,4 @@
 Contexte du projet
-Contexte du projet
 Tu es un data scientist junior embauché par une entreprise de logistique et de livraison.
 
 Ton projet consiste à développer un modèle de Machine Learning capable de prédire le temps total d’une livraison, depuis la commande jusqu’à la réception.
