@@ -15,13 +15,14 @@ def sample_data():
     X = df[['age', 'income']]
     y = df['churn']
     return X, y
+
 def test_split_dimensions(sample_data):
     X, y = sample_data
-    df = pd.concat([X, y], axis=1)
-    df = y.rename(columns={'churn': 'Churn'})
+    df = pd.concat([X, y.rename("Delivery_Time_min")], axis=1)
     trainX, testX, trainY, testY = split_data(df)
     assert len(trainX) == len(trainY)
     assert len(testX) == len(testY)
+
 
 X = pd.DataFrame({
     'feature1': np.random.rand(100),
