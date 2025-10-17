@@ -7,6 +7,7 @@ from sklearn.compose import ColumnTransformer
 from sklearn.model_selection import GridSearchCV, train_test_split
 from Evaluation import train_X,test_X, train_Y,test_Y
 
+
 def GridSearch_CV(trainX, testX ,trainY ,testY):
     RF = RandomForestRegressor()
     param_grid = {
@@ -68,4 +69,4 @@ def GridSearch_CV(trainX, testX ,trainY ,testY):
         "SVR" : {"MAE":mae_RF, "r_2" : r2_SVR}
     }
 result = GridSearch_CV(train_X,test_X, train_Y,test_Y)
-
+print(result)

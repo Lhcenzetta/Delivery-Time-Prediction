@@ -1,8 +1,12 @@
 import pandas as pd
 import numpy as np
+from sklearn.svm import SVR
 from sklearn.preprocessing import StandardScaler,OneHotEncoder
+from sklearn.pipeline import Pipeline
 from sklearn.model_selection import train_test_split
 from sklearn.compose import ColumnTransformer
+# from Gridseach import GridSearch_CV
+
 path = "/Users/lait-zet/Desktop/Work_local/Data/data_livre.csv"
 df = pd.read_csv(path)
 def handle_missing(df, columns):
@@ -59,12 +63,6 @@ def split_data(df):
     return train_X,test_X,train_Y,test_Y
 
 train_X,test_X,train_Y,test_Y = split_data(prepared_data)
-
-preprocessor = ColumnTransformer(
-    transformers=[
-        ('num', StandardScaler(), X_num),
-        ('cat', OneHotEncoder(handle_unknown = 'ignore'), X_cat)
-    ])
 
 preprocessor = ColumnTransformer(
     transformers=[
