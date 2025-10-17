@@ -65,3 +65,21 @@ preprocessor = ColumnTransformer(
         ('num', StandardScaler(), X_num),
         ('cat', OneHotEncoder(handle_unknown = 'ignore'), X_cat)
     ])
+
+preprocessor = ColumnTransformer(
+    transformers=[
+        ('num', StandardScaler(), num_data ),
+        ('cat', OneHotEncoder(handle_unknown = 'ignore'), cat_data)
+    ])
+
+pipeline = Pipeline([
+    ('preprocessor', preprocessor),
+    ('SVR', SVR())
+])
+paramR = {
+        'SVR__C': [0.1, 1, 10],
+        'SVR__kernel': ['linear', 'rbf'],
+        'SVR__gamma': ['scale', 'auto']
+}
+grid_search = GridSearch_CV(pipeline, paramR, cv=5)
+grid_search.fit(train_X, train_Y)
